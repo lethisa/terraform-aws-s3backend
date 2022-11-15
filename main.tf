@@ -36,7 +36,7 @@ resource "aws_kms_key" "kms_key" {
   }
 }
 
-resource "aws_s3_bucket" "s3_bucket" {
+resource "aws_s3_bucket_versioning" "s3_bucket" {
   bucket        = "${local.namespace}-state-bucket"
   force_destroy = var.force_destroy_state
 
@@ -67,9 +67,9 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket" {
 }
 
 resource "aws_dynamodb_table" "dynamodb_table" {
-  name = "${local.namespace}-state-lock"
-  hash_key = "LockID"
-  billing_mode = "PAY_PER_REQUEST"
+  name          = "${local.namespace}-state-lock"
+  hash_key      = "LockID"
+  billing_mode  = "PAY_PER_REQUEST"
   
   attribute {
     name = "LockID"
