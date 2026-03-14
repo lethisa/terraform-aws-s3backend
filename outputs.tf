@@ -1,4 +1,5 @@
 output "config" {
+  description = "AWS S3 Backend"
   value             = {
     bucket          = aws_s3_bucket.s3_bucket.bucket
     region          = data.aws_region.current.name
