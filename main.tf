@@ -1,8 +1,3 @@
-provider "aws" {
-  region    = "us-west-2"
-  profile   = "swinkler"
-}
-
 data "aws_region" "current" {}
 
 resource "random_string" "rand" {
